@@ -71,6 +71,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
   <nav class="tabs" role="tablist" aria-label="Sections">
     <a href="#needs" role="tab" data-tab="needs">Learning needs</a>
     <a href="#coding" role="tab" data-tab="coding">Vibe &amp; agentic coding</a>
+    <a href="#muse" role="tab" data-tab="muse">Muse skills</a>
     <a href="#materials" role="tab" data-tab="materials">Class materials</a>
     <a href="#photos" role="tab" data-tab="photos">Batch photos</a>
   </nav>
@@ -84,13 +85,6 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
   </section>
 
 
-  <section id="muse">
-    <span class="tag">Learning skills · Muse personal agent</span>
-    <h2>Learn Muse in 6 skills</h2>
-    <p class="sub"><a href="https://muse.ai" target="_blank" rel="noopener">Muse</a> is a personal AI agent: it has its own computer, remembers your context, can connect to Gmail and Calendar, runs tasks on a schedule and uses websites for you. Work through the skills in order. Each one is linked to a Batch 7 need and has a prompt to try.</p>
-    <div class="uses" id="museSkills"></div>
-    <p class="sub" style="margin-top:12px"><b>Safe use:</b> use your company's approved tools for work data. Don't paste tenant personal data or confidential contracts into a personal account. Connect only the apps a task needs, and check every draft before it is sent. Muse asks before it buys anything; keep it that way.</p>
-  </section>
 
   <div class="grid2">
     <section class="card">
@@ -152,6 +146,15 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
     <h2>Vibe coding and agentic coding</h2>
     <p class="sub">The interactive lesson: top needs with methods, learning paths, a quick tutor, a side-by-side demo, guardrails, a quiz and a hands-on exercise. <a href="learn.html" target="_blank" rel="noopener">Open it full screen</a>.</p>
     <iframe class="learnframe" data-src="learn.html" title="Vibe coding and agentic coding lesson"></iframe>
+  </div>
+
+  <div class="tab" id="tab-muse" role="tabpanel" hidden>
+  <section id="muse">
+    <h2>Learn Muse in 6 skills</h2>
+    <p class="sub"><a href="https://muse.ai" target="_blank" rel="noopener">Muse</a> is a personal AI agent: it has its own computer, remembers your context, can connect to Gmail and Calendar, runs tasks on a schedule and uses websites for you. Work through the skills in order. Each one is linked to a Batch 7 need and has a prompt to try.</p>
+    <div class="uses" id="museSkills"></div>
+    <p class="sub" style="margin-top:12px"><b>Safe use:</b> use your company's approved tools for work data. Don't paste tenant personal data or confidential contracts into a personal account. Connect only the apps a task needs, and check every draft before it is sent. Muse asks before it buys anything; keep it that way.</p>
+  </section>
   </div>
 
   <div class="tab" id="tab-materials" role="tabpanel" hidden>
@@ -403,7 +406,7 @@ document.addEventListener("click", async (e) => {
   setTimeout(() => { b.textContent = old; }, 1400);
 });
 
-const TABS = ["needs", "coding", "materials", "photos"];
+const TABS = ["needs", "coding", "muse", "materials", "photos"];
 function show() {
   const id = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "needs";
   TABS.forEach((t) => {
