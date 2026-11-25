@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GenAI for Facilities Management: Batch 7 learning needs</title>
+<title>GenAI for Facilities Management: Batch 7</title>
 <style>
 :root{--fg:#1f1e1d;--muted:#6b6a66;--bg:#faf9f5;--panel:#fff;--line:#e5e2d9;--accent:#2f6fd1;--bad:#b3261e;--gap:16px;--radius:10px}
 @media (prefers-color-scheme:dark){:root{--fg:#ecebe6;--muted:#a3a29c;--bg:#1d1c1a;--panel:#262523;--line:#3a3936;--accent:#5b93e6}}
@@ -40,13 +40,43 @@ input{min-width:200px}
 .muted{color:var(--muted)}
 section{margin-bottom:32px}
 footer{color:var(--muted);font-size:.8rem;margin-top:24px}
-@media print{.filters{display:none}.card{break-inside:avoid}}
+
+.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);margin:4px 0 22px;position:sticky;top:0;background:var(--bg);z-index:5;padding-top:8px}
+.tabs a{padding:9px 14px;border:1px solid transparent;border-bottom:none;border-radius:8px 8px 0 0;color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem;margin-bottom:-1px}
+.tabs a:hover{color:var(--fg)}
+.tabs a[aria-selected="true"]{color:var(--fg);background:var(--panel);border-color:var(--line)}
+.tab[hidden]{display:none}
+.learnframe{width:100%;height:calc(100vh - 150px);min-height:560px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--gap);margin-bottom:24px}
+.mcard h3{margin:0 0 6px;font-size:1rem}
+.mcard pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;margin:8px 0}
+.mini{font:inherit;font-size:.8rem;padding:4px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);cursor:pointer}
+.mini:hover{border-color:var(--accent)}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.use{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--panel)}
+.use b{display:block;margin-bottom:4px}
+.use p{margin:0 0 8px;font-size:.88rem}
+.show{columns:2 260px;padding-left:1.1em;margin:6px 0 0}
+.show li{margin-bottom:4px;break-inside:avoid}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:600}
+.photo{max-width:640px}
+@media print{.tabs{display:none}.filters{display:none}.card{break-inside:avoid}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>GenAI for Facilities Management: Batch 7 learning needs</h1>
-  <p class="sub">Course dates 23 to 25 Nov 2026. Built from the participants' self-introductions. Anonymised: no names, organisations or contact details.</p>
+  <h1>GenAI for Facilities Management: Batch 7</h1>
+  <p class="sub">Course dates 23 to 25 Nov 2026. Learning needs, course topics, class materials and batch photos in one place.</p>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <a href="#needs" role="tab" data-tab="needs">Learning needs</a>
+    <a href="#coding" role="tab" data-tab="coding">Vibe &amp; agentic coding</a>
+    <a href="#materials" role="tab" data-tab="materials">Class materials</a>
+    <a href="#photos" role="tab" data-tab="photos">Batch photos</a>
+  </nav>
+
+  <div class="tab" id="tab-needs" role="tabpanel">
+  <p class="sub">Built from the participants' self-introductions. Anonymised: no names, organisations or contact details.</p>
   <p class="lede"><span id="l-total">—</span> participants. The most common goal is <b id="l-theme">—</b> (<span id="l-theme-n">—</span> people), and <span id="l-begin">—</span> are starting with little or basic AI use.</p>
 
   <div class="tiles">
@@ -117,7 +147,79 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
     <summary>How the themes and levels were assigned</summary>
     <p class="muted">Function group, AI level and themes were classified from each person's own introduction text. "Not stated" means the introduction did not mention it. Names, organisations and emails are not included; each participant has an ID (P01 to P23).</p>
   </details>
-  <footer>Data: data.js (generated from batch7_needs.csv). Course: GenAI for Facilities Management, Batch 7, 23 to 25 Nov 2026.</footer>
+  </div>
+
+  <div class="tab" id="tab-coding" role="tabpanel" hidden>
+    <h2>Vibe coding and agentic coding</h2>
+    <p class="sub">The interactive lesson: top needs with methods, learning paths, a quick tutor, a side-by-side demo, guardrails, a quiz and a hands-on exercise. <a href="learn.html" target="_blank" rel="noopener">Open it full screen</a>.</p>
+    <iframe class="learnframe" data-src="learn.html" title="Vibe coding and agentic coding lesson"></iframe>
+  </div>
+
+  <div class="tab" id="tab-materials" role="tabpanel" hidden>
+    <h2>Class materials</h2>
+    <p class="sub">Picked from the class Padlet: the prompts and exercises that go with vibe coding, agents and visuals. Copy a prompt, change the part in [brackets], and try it.</p>
+
+    <section>
+      <span class="tag">Vibe coding · build an FM app</span>
+      <h2>8 starter app ideas</h2>
+      <p class="sub">Paste one into Claude, Gemini or AI Studio. Ask for changes in plain words until it works, then test it with sample data.</p>
+      <div class="uses" id="uses"></div>
+    </section>
+
+    <section>
+      <span class="tag">Agentic · build an assistant</span>
+      <h2>Copilot agent: Fire Safety Inspection &amp; Compliance Assistant</h2>
+      <div class="card mcard">
+        <p>Build an agent in Microsoft 365 Copilot (or a Gem / Claude Project) that uses the <a href="https://www.scdf.gov.sg/firecode" target="_blank" rel="noopener">SCDF Fire Code</a> as its knowledge source. The agent works through a short conversation:</p>
+        <ol>
+          <li><b>Understand the task:</b> building type, area or fire-safety system, purpose of the inspection, site photos or notes.</li>
+          <li><b>Give practical guidance:</b> explain the Fire Code in plain English, cite clauses that can be checked, make inspection checklists, ask follow-up questions.</li>
+          <li><b>Recommend actions:</b> for each issue, the observation, Fire Code clause, risk, priority (High / Medium / Low), corrective action and responsible party.</li>
+          <li><b>Produce FM outputs:</b> inspection checklist, preliminary compliance review, corrective-action register, draft contractor work order.</li>
+        </ol>
+        <p class="muted">Guardrail: it supports inspection preparation, not formal certification. It drafts for human review and never claims to issue work orders or notify people.</p>
+        <button class="mini" data-copy="agent">Copy agent prompt</button>
+      </div>
+    </section>
+
+    <section>
+      <span class="tag">Bring visuals to life · image AI</span>
+      <h2>Visual prompts</h2>
+      <div class="mgrid" id="visuals"></div>
+    </section>
+
+    <section>
+      <span class="tag">Gemini Notebook / NotebookLM · learn from documents</span>
+      <h2>Turn a code of practice into learning material</h2>
+      <p class="sub">Load a source such as the SCDF Fire Code or BCA Green Mark guide into NotebookLM, then use these prompts.</p>
+      <div class="mgrid" id="notebook"></div>
+    </section>
+
+    <section>
+      <span class="tag">Class showcase</span>
+      <h2>What Batch 7 built</h2>
+      <p class="sub">Work shared on the Padlet during the course (names left out).</p>
+      <div class="grid2">
+        <div class="card"><b>Find your pain point</b>
+          <ul class="show"><li>AGM pack preparation (Claude slides)</li><li>Quotation approval workflow</li><li>Matching reported defects to completed repair photos</li><li>Monthly review of disruption-linked M&amp;E incidents</li><li>Feedback workflow: SLA and escalation deck</li></ul></div>
+        <div class="card"><b>Visuals, videos and notebooks</b>
+          <ul class="show"><li>Water pump operations explainer</li><li>Interactive HVAC operations photo</li><li>HVAC technical evolution twin</li><li>Centralised district cooling system</li><li>Grid infographic</li><li>AI videos: fall protection, leaky pipe inspection, chiller plant, data centre FM</li><li>Notebooks: BCA Green Mark v7, OBC clean, FM solutions</li><li>Fire safety compliance agent (Copilot)</li><li>3D scan of the classroom (Polycam)</li></ul></div>
+      </div>
+      <p class="sub" style="margin-top:12px">Course slides, full prompts and everyone's posts are on the <a href="https://padlet.com/np2/genai-batch-7-s025i9ppqfcmfoz6ia3d" target="_blank" rel="noopener">class Padlet</a>.</p>
+    </section>
+  </div>
+
+  <div class="tab" id="tab-photos" role="tabpanel" hidden>
+    <h2>Batch 7 photos</h2>
+    <div class="card photo">
+      <p><b>Gen AI FM, 23 to 25 Nov 2026</b></p>
+      <p class="muted">Class photos from the three days, in a shared Google Photos album. Open it to view or download photos. Google Photos opens in a new tab.</p>
+      <p><a class="btn" href="https://photos.app.goo.gl/4gfJkubLCtXDx89q6" target="_blank" rel="noopener">Open the photo album</a></p>
+      <p class="sub">Please ask before posting photos of classmates on social media.</p>
+    </div>
+  </div>
+
+  <footer>Needs data: data.js (from batch7_needs.csv). Class materials adapted from the Batch 7 Padlet. Course: GenAI for Facilities Management, Batch 7, 23 to 25 Nov 2026.</footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
@@ -248,6 +350,69 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
   [fTheme, fLevel].forEach((s) => s.addEventListener('change', drawDir));
   q.addEventListener('input', drawDir);
   drawDir();
+})();
+</script>
+
+<script>
+(() => {
+const USES = [
+ ["Facilities Service Portal","Build a modern, mobile-friendly website for industrial tenants to submit maintenance requests, view announcements and access emergency contacts. Use sample data."],
+ ["Energy Monitoring Dashboard","Create an interactive dashboard showing electricity consumption, costs and energy trends across three Singapore industrial buildings. Use sample data, charts and filters."],
+ ["Preventive Maintenance Planner","Build a maintenance planning tool to schedule inspections and servicing for lifts, HVAC, pumps and fire safety systems. Include calendar views and task status tracking."],
+ ["Smart Building Explorer","Create an interactive 3D-style industrial building where users can explore HVAC, lifts, lighting and IoT sensors by clicking on different building systems."],
+ ["Contractor Performance Dashboard","Build a dashboard comparing five maintenance contractors based on response times, service quality, safety performance and costs. Include interactive charts and rankings."],
+ ["Tenant Feedback Portal","Create a tenant feedback website where users can report facilities issues, rate services and track the status of their feedback. Include a management dashboard."],
+ ["Asset Lifecycle Planner","Build an interactive asset management tool to track equipment age, condition, maintenance history and replacement priorities. Use sample industrial building assets."],
+ ["Industrial Estate Directory","Create a modern website for a fictional Singapore industrial estate featuring an interactive estate map, building directory, available amenities and transport information."]
+];
+const VISUALS = [
+ ["3D exploded view","Create an ultra-realistic 3D exploded-view diagram of [equipment / system], with major components separated and floating in precise alignment, revealing highly detailed internal parts.\n\nThree-quarter isometric view, realistic industrial materials, clean white background, technical callout lines with clear labels, studio lighting, premium product photography, professional engineering aesthetic.","Try: air handling unit, water-cooled chiller, centrifugal pump, lift traction motor, fire alarm control panel. Then ask the AI to explain what each part does."],
+ ["Before and after","Using the uploaded photo, create a photorealistic side-by-side Before and After transformation.\n\nLeft: keep the original scene. Right: transform the same scene into [chosen scenario].\n\nKeep the same camera angle and perspective. Highly realistic, cinematic lighting, detailed.","Scenarios: superstorm, snowfall, cyberpunk 2080, nature takes over."],
+ ["Weather storyboard","Analyse the uploaded photo and identify the location in Singapore, if recognisable. If unsure, ask me.\n\nSearch the latest NEA weather data for this location (2-hour nowcast, 24-hour forecast, advisories).\n\nCreate a 3-panel storyboard: Original, Next 2 Hours, Later Forecast. Preserve the buildings, layout and camera angle. Add a small weather dashboard with the forecast periods and NEA as the source.\n\nDo not invent weather readings or warnings.","Shows grounding: the AI must use real data and say where it came from."]
+];
+const NOTEBOOK = [
+ ["Infographic","Create a visually engaging infographic titled \"5 Fire Safety Mistakes Industrial Tenants Must Avoid\". Include illustrated examples, potential risks, corrective actions and relevant SCDF references. Use simple language suitable for tenants."],
+ ["Audio overview","Create an engaging conversation between two FM professionals discussing common fire safety issues in industrial buildings and practical ways to fix them."],
+ ["Quiz","Create 10 scenario-based multiple-choice questions for FM officers working in Singapore industrial estates. Test practical judgement and application of SCDF requirements rather than memorisation. Explain each answer with source references."],
+ ["Video overview","Create a short visual fire safety orientation briefing for new industrial tenants. Explain their everyday responsibilities, common hazards, situations requiring escalation and relevant fire safety requirements."]
+];
+const AGENT = `Create a Fire Safety Inspection & Compliance Assistant for Facilities Management (FM) professionals in Singapore.
+
+Knowledge source: the SCDF Fire Code (Code of Practice for Fire Precautions in Buildings).
+
+Help FM staff understand fire-safety requirements, prepare building inspections, identify potential non-compliance issues and recommend corrective actions. Guide users through a short conversation:
+
+1. Understand the building and task: building type, area or fire-safety system being reviewed, purpose of the inspection, relevant site photos or observations.
+2. Provide practical guidance: explain relevant Fire Code requirements in plain English, cite clauses that can be verified, generate inspection checklists, ask follow-up questions when information is missing, highlight areas needing professional verification.
+3. Recommend corrective actions. For each issue give: observation, Fire Code clause, potential risk, priority (High / Medium / Low), recommended action, responsible party.
+4. Generate FM outputs as needed: inspection checklist, preliminary compliance review, corrective-action register, draft contractor work order.
+
+This assistant supports inspection preparation, not formal fire-safety certification. Present drafts for human review; never claim to issue work orders, notify personnel or carry out corrective actions.`;
+const esc = (t) => t.replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = {agent: AGENT};
+document.getElementById("uses").innerHTML = USES.map(([t, p], i) => { store["u"+i] = p; return `<div class="use"><b>${i+1}. ${esc(t)}</b><p>${esc(p)}</p><button class="mini" data-copy="u${i}">Copy prompt</button></div>`; }).join("");
+document.getElementById("visuals").innerHTML = VISUALS.map(([t, p, n], i) => { store["v"+i] = p; return `<div class="card mcard"><h3>${esc(t)}</h3><pre>${esc(p)}</pre><p class="sub">${esc(n)}</p><button class="mini" data-copy="v${i}">Copy prompt</button></div>`; }).join("");
+document.getElementById("notebook").innerHTML = NOTEBOOK.map(([t, p], i) => { store["n"+i] = p; return `<div class="card mcard"><h3>${esc(t)}</h3><pre>${esc(p)}</pre><button class="mini" data-copy="n${i}">Copy prompt</button></div>`; }).join("");
+document.addEventListener("click", async (e) => {
+  const b = e.target.closest("[data-copy]"); if (!b) return;
+  const txt = store[b.dataset.copy], old = b.textContent;
+  try { await navigator.clipboard.writeText(txt); b.textContent = "Copied"; }
+  catch (err) { const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); b.textContent = "Copied"; }
+  setTimeout(() => { b.textContent = old; }, 1400);
+});
+
+const TABS = ["needs", "coding", "materials", "photos"];
+function show() {
+  const id = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "needs";
+  TABS.forEach((t) => {
+    document.getElementById("tab-" + t).hidden = t !== id;
+    document.querySelector(`[data-tab="${t}"]`).setAttribute("aria-selected", t === id);
+  });
+  if (id === "coding") { const f = document.querySelector(".learnframe"); if (!f.src) f.src = f.dataset.src; }
+  if (id === "needs") window.dispatchEvent(new Event("resize"));
+}
+window.addEventListener("hashchange", () => { show(); window.scrollTo(0, 0); });
+show();
 })();
 </script>
 </body>
