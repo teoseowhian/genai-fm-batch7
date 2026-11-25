@@ -1,0 +1,24 @@
+id,function_group,ai_level,challenge,bring_back,themes,theme_count
+P01,FM operations,Basic,Manual email replies and notifications to tenants; reviewing document and drawing submissions,Automate email replies and tenant notifications; AI review of document and drawing submissions,Routine & admin automation;Drafting & communications;Contracts & documents,3
+P02,FM operations,Basic,Not stated,Use different AI technologies to help work processes,Routine & admin automation;AI foundations & tools,2
+P03,Retail operations,Not stated,"Forms and records (stocks, tenant feedback, defects list) are hard for the team to access, update and track",Build a shared platform where team members access and update forms and track records,Routine & admin automation;Dashboards & monitoring;Retail ops & inventory,3
+P04,FM operations,None / minimal,Workflow has manual steps,Methods of automation to improve workflow,Routine & admin automation,1
+P05,FM operations,None / minimal,Time spent drafting communications and summarising information,"Practical ways to use AI for drafting, summarising and day-to-day processes, and ideas to bring back to the team",Routine & admin automation;Reporting & data analysis;Drafting & communications,3
+P06,FM operations,Basic,Not stated,Practical AI skills and tools to save time and improve productivity in daily work,Routine & admin automation;AI foundations & tools,2
+P07,FM operations,Advanced,Preventive maintenance (PM) scheduling is manual,Automation for PM scheduling,Routine & admin automation;Maintenance & asset reliability,2
+P08,FM operations,Not stated,Analysing data and producing reports (e.g. availability),Use AI to analyse data and generate reports,Reporting & data analysis,1
+P09,Not stated,Basic,Defect report closure is slow because updates are delayed; converting SOR into a method statement presentation; spotting parts that break down often,Convert SOR to method statement presentations; speed up defect report closure; detect frequently failing parts,Reporting & data analysis;Maintenance & asset reliability;Contracts & documents,3
+P10,Building engineering,Basic,Tracking M&E equipment technical issues and status reporting,Monitor M&E equipment technical issues and automate status reporting,Reporting & data analysis;Maintenance & asset reliability;Dashboards & monitoring,3
+P11,New to FM,None / minimal,New to FM,Better understanding of Smart FM,AI foundations & tools,1
+P12,FM operations,Basic,Not stated,In-depth knowledge of AI software,AI foundations & tools,1
+P13,FM operations,Regular user,Administrative workload from routine tasks,Practical AI applications to automate routine tasks and reduce administrative workload,Routine & admin automation;Drafting & communications,2
+P14,FM contracts,Not stated,Contract management takes time,Use AI to manage contracts more efficiently,Contracts & documents,1
+P15,FM contracts,None / minimal,Repetitive tasks,Create useful skills and better prompts to manage repetitive tasks,Routine & admin automation;AI foundations & tools,2
+P16,Strata management,Basic,Manual tasks,Work and task automation,Routine & admin automation;Contracts & documents,2
+P17,FM operations,Advanced,Information spread across emails and sensor systems,A single dashboard combining email and sensor API data for real-time situational awareness,Dashboards & monitoring,1
+P18,FM contracts,Not stated,Not stated,Generative AI skills to make work more efficient,AI foundations & tools,1
+P19,FM operations,Regular user,Not stated,"How AI improves FM: predictive maintenance, smart energy management, tenant experience",Reporting & data analysis;Maintenance & asset reliability,2
+P20,FM operations,Not stated,Routine work activities,How GenAI can help with routine work activities,Routine & admin automation,1
+P21,Retail operations,Basic,Not stated,"Demand forecasting, replenishment, labour scheduling, inventory accuracy, fulfilment routing, customer-service triage",Reporting & data analysis;Retail ops & inventory,2
+P22,Not stated,Not stated,Not stated,Not stated,,0
+P23,Building engineering,None / minimal,Not stated,Not stated,,0

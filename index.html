@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenAI for Facilities Management: Batch 7 learning needs</title>
+<style>
+:root{--fg:#1f1e1d;--muted:#6b6a66;--bg:#faf9f5;--panel:#fff;--line:#e5e2d9;--accent:#2f6fd1;--bad:#b3261e;--gap:16px;--radius:10px}
+@media (prefers-color-scheme:dark){:root{--fg:#ecebe6;--muted:#a3a29c;--bg:#1d1c1a;--panel:#262523;--line:#3a3936;--accent:#5b93e6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:2rem;margin:0 0 4px}
+h2{font-size:1.15rem;font-weight:600;margin:0 0 4px}
+.sub{color:var(--muted);font-size:.85rem;margin:0 0 var(--gap)}
+.lede{max-width:70ch;margin:0 0 24px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--gap);margin-bottom:24px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;min-width:0}
+.num{font-family:Georgia,serif;font-size:2.2rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.lbl{color:var(--muted);font-size:.85rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--gap);margin-bottom:24px}
+.chart{position:relative;min-height:120px}
+.chart svg text{font-size:12.5px;fill:var(--fg)}
+.chart .val{fill:var(--muted);font-variant-numeric:tabular-nums}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.15);border-radius:8px;padding:6px 9px;font-size:12.5px;max-width:260px;z-index:2}
+.tip b{display:block}.tip span{color:var(--muted)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.85rem}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.heat td.c{text-align:center;font-variant-numeric:tabular-nums;min-width:44px}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:1px 7px;margin:1px 2px 1px 0;white-space:nowrap}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+input,select{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg)}
+input{min-width:200px}
+.focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--gap);margin-bottom:24px}
+.focus ol,.focus ul{margin:6px 0 0;padding-left:1.2em}
+.focus li{margin-bottom:4px}
+.muted{color:var(--muted)}
+section{margin-bottom:32px}
+footer{color:var(--muted);font-size:.8rem;margin-top:24px}
+@media print{.filters{display:none}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>GenAI for Facilities Management: Batch 7 learning needs</h1>
+  <p class="sub">Course dates 23 to 25 Nov 2026. Built from the participants' self-introductions. Anonymised: no names, organisations or contact details.</p>
+  <p class="lede"><span id="l-total">—</span> participants. The most common goal is <b id="l-theme">—</b> (<span id="l-theme-n">—</span> people), and <span id="l-begin">—</span> are starting with little or basic AI use.</p>
+
+  <div class="tiles">
+    <div class="card"><div class="num" id="t-total">—</div><div class="lbl">Participants</div></div>
+    <div class="card"><div class="num" id="t-goal">—</div><div class="lbl">Said what they want to bring back</div></div>
+    <div class="card"><div class="num" id="t-begin">—</div><div class="lbl">None, minimal or basic AI use</div></div>
+    <div class="card"><div class="num" id="t-leads">—</div><div class="lbl">Regular or advanced AI users</div></div>
+    <div class="card"><div class="num" id="t-nochal">—</div><div class="lbl">No challenge stated yet</div></div>
+  </div>
+
+  <section>
+    <h2>What the class wants to bring back</h2>
+    <p class="sub">Participants per learning theme. One person can ask for several themes. Point at a bar for details.</p>
+    <div class="card"><div class="chart" id="theme-chart"></div></div>
+  </section>
+
+  <div class="grid2">
+    <section class="card">
+      <h2>Who is in the room</h2>
+      <p class="sub">Participants by function group</p>
+      <div class="chart" id="group-chart"></div>
+    </section>
+    <section class="card">
+      <h2>Starting point with AI</h2>
+      <p class="sub">Participants by AI experience, as they described it</p>
+      <div class="chart" id="level-chart"></div>
+    </section>
+  </div>
+
+  <section>
+    <h2>Which functions need which themes</h2>
+    <p class="sub">Number of participants in each function group who asked for each theme</p>
+    <div class="card scroll"><table class="heat" id="heat"></table></div>
+  </section>
+
+  <section>
+    <h2>Where to focus as the lecturer</h2>
+    <div class="focus">
+      <div class="card"><b>Table leads for hands-on work</b><p class="sub">Regular or advanced AI users. Pair each with beginners.</p><div id="leads">—</div></div>
+      <div class="card"><b>Follow up before Day 1</b><p class="sub">No challenge stated yet. Ask each for one real task to automate.</p><div id="followup">—</div></div>
+      <div class="card"><b>Suggested flow over the 3 days</b>
+        <ol>
+          <li>Day 1: prompting basics, tool tour and safe use of company data; drafting tenant notices and emails.</li>
+          <li>Day 2: routine automation (email or form to AI draft to human approval), reports from raw logs, contract and SOR extraction.</li>
+          <li>Day 3: maintenance analytics (repeat failures, PM schedule), FM dashboards, retail forecasting group.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Participant directory</h2>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search function, challenge or goal" aria-label="Search participants">
+      <select id="f-theme" aria-label="Theme"></select>
+      <select id="f-level" aria-label="AI level"></select>
+    </div>
+    <p class="sub" id="dir-count">—</p>
+    <div class="card scroll">
+      <table>
+        <thead><tr><th>ID</th><th>Function</th><th>AI level</th><th>Challenge</th><th>Wants to bring back</th><th>Themes</th></tr></thead>
+        <tbody id="dir"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details>
+    <summary>How the themes and levels were assigned</summary>
+    <p class="muted">Function group, AI level and themes were classified from each person's own introduction text. "Not stated" means the introduction did not mention it. Names, organisations and emails are not included; each participant has an ID (P01 to P23).</p>
+  </details>
+  <footer>Data: data.js (generated from batch7_needs.csv). Course: GenAI for Facilities Management, Batch 7, 23 to 25 Nov 2026.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="data.js"></script>
+<script>
+(() => {
+  const P = window.PARTICIPANTS || [];
+  const $ = (id) => document.getElementById(id);
+  const split = (s) => (s || '').split(';').map((x) => x.trim()).filter(Boolean);
+  const LEVELS = ['None / minimal', 'Basic', 'Regular user', 'Advanced', 'Not stated'];
+
+  // ---- Calculations ----
+  const summary = {
+    participants: P.length,
+    stated_goal: P.filter((r) => r.bring_back && r.bring_back !== 'Not stated').length,
+    beginner_or_basic: P.filter((r) => ['None / minimal', 'Basic'].includes(r.ai_level)).length,
+    regular_or_advanced: P.filter((r) => ['Regular user', 'Advanced'].includes(r.ai_level)).length,
+    challenge_not_stated: P.filter((r) => !r.challenge || r.challenge === 'Not stated').length,
+  };
+  const themeMap = new Map();
+  P.forEach((r) => split(r.themes).forEach((t) => { if (!themeMap.has(t)) themeMap.set(t, []); themeMap.get(t).push(r.id); }));
+  const byTheme = [...themeMap].map(([theme, names]) => ({theme, n: names.length, share: names.length / P.length, who: names.join(', ')}))
+    .sort((a, b) => b.n - a.n || a.theme.localeCompare(b.theme));
+  const byGroup = [...d3.rollup(P, (v) => v.map((r) => r.id), (r) => r.function_group || 'Not stated')]
+    .map(([g, names]) => ({label: g, n: names.length, who: names.join(', ')})).sort((a, b) => b.n - a.n);
+  const lv = d3.rollup(P, (v) => v.map((r) => r.id), (r) => r.ai_level || 'Not stated');
+  const byLevel = LEVELS.filter((k) => lv.has(k)).map((k) => ({label: k, n: lv.get(k).length, who: lv.get(k).join(', ')}));
+
+  // ---- Headline numbers ----
+  $('l-total').textContent = $('t-total').textContent = summary.participants;
+  $('l-begin').textContent = $('t-begin').textContent = summary.beginner_or_basic;
+  $('t-goal').textContent = summary.stated_goal;
+  $('t-leads').textContent = summary.regular_or_advanced;
+  $('t-nochal').textContent = summary.challenge_not_stated;
+  if (byTheme[0]) { $('l-theme').textContent = byTheme[0].theme.toLowerCase(); $('l-theme-n').textContent = byTheme[0].n; }
+
+  // ---- Horizontal bar chart ----
+  function hbar(el, rows, tip) {
+    el.replaceChildren();
+    const W = Math.max(260, el.clientWidth), rowH = 30, H = rows.length * rowH + 4;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`)
+      .attr('role', 'img').attr('aria-label', rows.map((r) => `${r.label}: ${r.n}`).join('; '));
+    const probe = svg.append('text');
+    let lw = 0;
+    rows.forEach((r) => { probe.text(r.label); lw = Math.max(lw, probe.node().getComputedTextLength()); });
+    probe.remove();
+    lw = Math.min(lw + 10, W * 0.45);
+    const x = d3.scaleLinear().domain([0, d3.max(rows, (r) => r.n) || 1]).range([0, W - lw - 36]);
+    const tipEl = document.createElement('div'); tipEl.className = 'tip'; tipEl.hidden = true; el.append(tipEl);
+    const g = svg.selectAll('g').data(rows).join('g').attr('transform', (d, i) => `translate(0,${i * rowH})`);
+    g.append('text').attr('x', lw - 8).attr('y', rowH / 2).attr('dy', '0.35em').attr('text-anchor', 'end').text((d) => d.label);
+    g.append('rect').attr('x', lw).attr('y', 6).attr('height', rowH - 12).attr('rx', 3)
+      .attr('width', (d) => Math.max(2, x(d.n))).style('fill', 'var(--accent)');
+    g.append('text').attr('class', 'val').attr('x', (d) => lw + Math.max(2, x(d.n)) + 6).attr('y', rowH / 2).attr('dy', '0.35em').text((d) => d.n);
+    g.append('rect').attr('width', W).attr('height', rowH).style('fill', 'transparent')
+      .on('pointermove', (ev, d) => {
+        tipEl.replaceChildren();
+        const b = document.createElement('b'); b.textContent = `${d.label}: ${d.n}`;
+        const s = document.createElement('span'); s.textContent = tip(d);
+        tipEl.append(b, s); tipEl.hidden = false;
+        const [mx, my] = d3.pointer(ev, el);
+        tipEl.style.left = Math.max(0, Math.min(mx + 12, el.clientWidth - 270)) + 'px';
+        tipEl.style.top = (my + 12) + 'px';
+      })
+      .on('pointerleave', () => { tipEl.hidden = true; });
+  }
+  function drawCharts() {
+    hbar($('theme-chart'), byTheme.map((r) => ({...r, label: r.theme})), (d) => `${d3.format('.0%')(d.share)} of the class. ${d.who}`);
+    hbar($('group-chart'), byGroup, (d) => d.who);
+    hbar($('level-chart'), byLevel, (d) => d.who);
+  }
+  drawCharts();
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(drawCharts, 150); });
+
+  // ---- Heatmap: function group x theme ----
+  (() => {
+    const el = $('heat');
+    const themes = byTheme.map((r) => r.theme);
+    const count = (g, t) => P.filter((r) => (r.function_group || 'Not stated') === g && split(r.themes).includes(t)).length;
+    const groups = byGroup.map((r) => r.label).filter((g) => themes.some((t) => count(g, t)));
+    const max = d3.max(groups.flatMap((g) => themes.map((t) => count(g, t)))) || 1;
+    const hr = el.createTHead().insertRow();
+    ['Function group', ...themes].forEach((t) => { const th = document.createElement('th'); th.textContent = t; hr.append(th); });
+    const tb = el.createTBody();
+    groups.forEach((g) => {
+      const tr = tb.insertRow();
+      tr.insertCell().textContent = g;
+      themes.forEach((t) => {
+        const n = count(g, t), td = tr.insertCell(); td.className = 'c';
+        if (n) { td.textContent = n; td.style.background = `color-mix(in srgb, var(--accent) ${Math.round(15 + 60 * n / max)}%, transparent)`; }
+        else { td.textContent = '·'; td.style.color = 'var(--muted)'; }
+      });
+    });
+  })();
+
+  // ---- Lecturer focus lists ----
+  const list = (el, rows, fmt) => {
+    el.replaceChildren();
+    if (!rows.length) { el.textContent = 'None'; return; }
+    const ul = document.createElement('ul');
+    rows.forEach((r) => { const li = document.createElement('li'); li.textContent = fmt(r); ul.append(li); });
+    el.append(ul);
+  };
+  list($('leads'), P.filter((r) => ['Regular user', 'Advanced'].includes(r.ai_level)), (r) => `${r.id}, ${r.function_group} (${r.ai_level})`);
+  list($('followup'), P.filter((r) => !r.challenge || r.challenge === 'Not stated'), (r) => `${r.id}, ${r.function_group}`);
+
+  // ---- Directory ----
+  const fTheme = $('f-theme'), fLevel = $('f-level'), q = $('q');
+  fTheme.append(new Option('All themes', ''), ...byTheme.map((r) => new Option(`${r.theme} (${r.n})`, r.theme)));
+  fLevel.append(new Option('All AI levels', ''), ...byLevel.map((r) => new Option(`${r.label} (${r.n})`, r.label)));
+  function drawDir() {
+    const term = q.value.trim().toLowerCase();
+    const rows = P.filter((r) => (!fTheme.value || split(r.themes).includes(fTheme.value))
+      && (!fLevel.value || r.ai_level === fLevel.value)
+      && (!term || [r.id, r.function_group, r.challenge, r.bring_back].join(' ').toLowerCase().includes(term)));
+    $('dir-count').textContent = `Showing ${rows.length} of ${P.length} participants`;
+    const tb = $('dir'); tb.replaceChildren();
+    rows.forEach((r) => {
+      const tr = tb.insertRow();
+      const add = (txt, cls) => { const td = tr.insertCell(); td.textContent = txt || ''; if (cls) td.className = cls; return td; };
+      add(r.id);
+      add(r.function_group); add(r.ai_level); add(r.challenge); add(r.bring_back);
+      const td = add('');
+      split(r.themes).forEach((t) => { const s = document.createElement('span'); s.className = 'pill'; s.textContent = t; td.append(s); });
+    });
+    if (!rows.length) { const td = tb.insertRow().insertCell(); td.colSpan = 6; td.className = 'muted'; td.textContent = 'No participants match these filters.'; }
+  }
+  [fTheme, fLevel].forEach((s) => s.addEventListener('change', drawDir));
+  q.addEventListener('input', drawDir);
+  drawDir();
+})();
+</script>
+</body>
+</html>

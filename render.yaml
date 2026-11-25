@@ -1,0 +1,10 @@
+services:
+  - type: web
+    runtime: static
+    name: genai-fm-batch7
+    buildCommand: ""
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex
