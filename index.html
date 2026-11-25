@@ -83,6 +83,15 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
     <div class="card"><div class="chart" id="theme-chart"></div></div>
   </section>
 
+
+  <section id="muse">
+    <span class="tag">Learning skills · Muse personal agent</span>
+    <h2>Learn Muse in 6 skills</h2>
+    <p class="sub"><a href="https://muse.ai" target="_blank" rel="noopener">Muse</a> is a personal AI agent: it has its own computer, remembers your context, can connect to Gmail and Calendar, runs tasks on a schedule and uses websites for you. Work through the skills in order. Each one is linked to a Batch 7 need and has a prompt to try.</p>
+    <div class="uses" id="museSkills"></div>
+    <p class="sub" style="margin-top:12px"><b>Safe use:</b> use your company's approved tools for work data. Don't paste tenant personal data or confidential contracts into a personal account. Connect only the apps a task needs, and check every draft before it is sent. Muse asks before it buys anything; keep it that way.</p>
+  </section>
+
   <div class="grid2">
     <section class="card">
       <h2>Who is in the room</h2>
@@ -377,6 +386,15 @@ const store = {agent: AGENT};
 document.getElementById("uses").innerHTML = USES.map(([t, p], i) => { store["u"+i] = p; return `<div class="use"><b>${i+1}. ${esc(t)}</b><p>${esc(p)}</p><button class="mini" data-copy="u${i}">Copy prompt</button></div>`; }).join("");
 document.getElementById("visuals").innerHTML = VISUALS.map(([t, p, n], i) => { store["v"+i] = p; return `<div class="card mcard"><h3>${esc(t)}</h3><pre>${esc(p)}</pre><p class="sub">${esc(n)}</p><button class="mini" data-copy="v${i}">Copy prompt</button></div>`; }).join("");
 document.getElementById("notebook").innerHTML = NOTEBOOK.map(([t, p], i) => { store["n"+i] = p; return `<div class="card mcard"><h3>${esc(t)}</h3><pre>${esc(p)}</pre><button class="mini" data-copy="n${i}">Copy prompt</button></div>`; }).join("");
+const MUSE = [
+ ["1. Brief it once","AI foundations & tools","Tell Muse your role, buildings and the tasks you repeat, so you don't repeat yourself later.","Remember this about me: I'm a facilities executive managing two industrial buildings in Singapore. My recurring work is tenant emails, PM schedules for lifts, HVAC, pumps and fire systems, contractor follow-ups and a monthly report. Ask me 3 questions to fill gaps."],
+ ["2. Hand off a task","Routine & admin automation","Give a messy task and let it work in the background until it's finished.","Research the main SCDF and BCA requirements for annual fire safety and lift inspections in Singapore industrial buildings. Turn them into a one-page checklist with the source for each item."],
+ ["3. Draft from email","Drafting & communications","Connect Gmail with your permission, then let it draft replies for you to check.","Look at tenant emails from the last 7 days about defects or complaints. Draft a polite reply to each with next steps and a target date. Save them as drafts; don't send anything."],
+ ["4. Schedule it","Routine & admin automation","Set a recurring task so a routine job runs without you starting it.","Every Monday at 8am, send me an FM briefing: this week's PM tasks from my calendar, any contractor visits, and overdue follow-ups. Keep it to 10 lines."],
+ ["5. Build a tracker","Reporting & data analysis","Ask for a small tracker or dashboard, then refine it together.","Make me a simple tracker for defects: location, date reported, contractor, status and days open. Add sample data and show which items are older than 14 days."],
+ ["6. Set a goal","Maintenance & asset reliability","Break a bigger goal into steps with reminders and progress tracking.","My goal is to cut repeat breakdowns of our water pumps over the next 3 months. Break it into weekly steps, remind me each Friday, and keep a progress tracker."]
+];
+document.getElementById("museSkills").innerHTML = MUSE.map(([t, need, what, p], i) => { store["m"+i] = p; return `<div class="use"><span class="tag">${esc(need)}</span><b>${esc(t)}</b><p>${esc(what)}</p><p class="muted" style="font-size:.85rem">“${esc(p)}”</p><button class="mini" data-copy="m${i}">Copy prompt</button></div>`; }).join("");
 document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-copy]"); if (!b) return;
   const txt = store[b.dataset.copy], old = b.textContent;
