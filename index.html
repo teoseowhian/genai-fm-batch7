@@ -77,16 +77,6 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
 
   <div class="tab" id="tab-needs" role="tabpanel">
   <p class="sub">Built from the participants' self-introductions. Anonymised: no names, organisations or contact details.</p>
-  <p class="lede"><span id="l-total">—</span> participants. The most common goal is <b id="l-theme">—</b> (<span id="l-theme-n">—</span> people), and <span id="l-begin">—</span> are starting with little or basic AI use.</p>
-
-  <div class="tiles">
-    <div class="card"><div class="num" id="t-total">—</div><div class="lbl">Participants</div></div>
-    <div class="card"><div class="num" id="t-goal">—</div><div class="lbl">Said what they want to bring back</div></div>
-    <div class="card"><div class="num" id="t-begin">—</div><div class="lbl">None, minimal or basic AI use</div></div>
-    <div class="card"><div class="num" id="t-leads">—</div><div class="lbl">Regular or advanced AI users</div></div>
-    <div class="card"><div class="num" id="t-nochal">—</div><div class="lbl">No challenge stated yet</div></div>
-  </div>
-
   <section>
     <h2>What the class wants to bring back</h2>
     <p class="sub">Participants per learning theme. One person can ask for several themes. Point at a bar for details.</p>
@@ -249,12 +239,6 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
   const byLevel = LEVELS.filter((k) => lv.has(k)).map((k) => ({label: k, n: lv.get(k).length, who: lv.get(k).join(', ')}));
 
   // ---- Headline numbers ----
-  $('l-total').textContent = $('t-total').textContent = summary.participants;
-  $('l-begin').textContent = $('t-begin').textContent = summary.beginner_or_basic;
-  $('t-goal').textContent = summary.stated_goal;
-  $('t-leads').textContent = summary.regular_or_advanced;
-  $('t-nochal').textContent = summary.challenge_not_stated;
-  if (byTheme[0]) { $('l-theme').textContent = byTheme[0].theme.toLowerCase(); $('l-theme-n').textContent = byTheme[0].n; }
 
   // ---- Horizontal bar chart ----
   function hbar(el, rows, tip) {
