@@ -61,6 +61,19 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
 .show li{margin-bottom:4px;break-inside:avoid}
 .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:600}
 .photo{max-width:640px}
+
+.steps5{counter-reset:st;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.steps5 li{counter-increment:st;border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--panel)}
+.steps5 li::before{content:counter(st);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:.8rem;margin-bottom:6px}
+.steps5 b{display:block;margin-bottom:2px}
+.steps5 span{font-size:.86rem;color:var(--muted)}
+.need{border-left:3px solid var(--accent);padding:8px 12px;background:var(--panel);border-radius:0 8px 8px 0}
+.need small{color:var(--muted);display:block}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.chk input{min-width:0;margin-top:3px;width:18px;height:18px}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:8px 0}
+.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.links a{display:block;padding:6px 0}
 @media print{.tabs{display:none}.filters{display:none}.card{break-inside:avoid}}
 </style>
 </head>
@@ -70,6 +83,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
   <p class="sub">Course dates 23 to 25 Nov 2026. Learning needs, course topics, class materials and batch photos in one place.</p>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <a href="#needs" role="tab" data-tab="needs">Learning needs</a>
+    <a href="#routine" role="tab" data-tab="routine">Routine automation</a>
     <a href="#coding" role="tab" data-tab="coding">Vibe &amp; agentic coding</a>
     <a href="#muse" role="tab" data-tab="muse">Muse skills</a>
     <a href="#materials" role="tab" data-tab="materials">Class materials</a>
@@ -140,6 +154,65 @@ footer{color:var(--muted);font-size:.8rem;margin-top:24px}
     <summary>How the themes and levels were assigned</summary>
     <p class="muted">Function group, AI level and themes were classified from each person's own introduction text. "Not stated" means the introduction did not mention it. Names, organisations and emails are not included; each participant has an ID (P01 to P23).</p>
   </details>
+  </div>
+
+  <div class="tab" id="tab-routine" role="tabpanel" hidden>
+    <h2>Routine &amp; admin automation</h2>
+    <p class="sub">The top learning need: <b id="rt-n">11</b> of 23 participants asked for it. Start here: see what classmates want to automate, learn the 5-step method, pick a tool, then try a recipe.</p>
+
+    <section>
+      <h2>What the class wants to automate</h2>
+      <div class="uses" id="rtNeeds"></div>
+    </section>
+
+    <section>
+      <h2>The method: map, template, draft, approve, measure</h2>
+      <ol class="steps5">
+        <li><b>Map one task</b><span>Pick one task you repeat every week. Write its steps, inputs and output on one page. 15 minutes, no AI yet.</span></li>
+        <li><b>Make a template</b><span>Paste 3 past examples into Copilot, ChatGPT or Gemini. Ask for one reusable prompt with blanks to fill.</span></li>
+        <li><b>Let AI draft</b><span>Use the template, or vibe-code a small form around it in Google AI Studio. Dummy data first.</span></li>
+        <li><b>A person approves</b><span>AI drafts, you check and send. Nothing goes to tenants or contractors automatically.</span></li>
+        <li><b>Measure for a week</b><span>Time the task before and after. Keep it only if it saves time and the drafts are right.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Pick the right tool</h2>
+      <p class="sub">Start with the tool your company already approves. Choose by the job, not the brand.</p>
+      <div class="card scroll"><table>
+        <thead><tr><th>If you want to…</th><th>Use</th><th>Where to start</th></tr></thead>
+        <tbody id="rtTools"></tbody>
+      </table></div>
+    </section>
+
+    <section>
+      <h2>6 recipes to try</h2>
+      <p class="sub">Each recipe is a real FM routine. Follow the steps, copy the prompt, change the [brackets].</p>
+      <div class="mgrid" id="rtRecipes"></div>
+    </section>
+
+    <div class="grid2">
+      <section class="card">
+        <h2>My first automation</h2>
+        <p class="sub">Tick as you go. Saved in this browser only.</p>
+        <div class="prog"><i id="rtBar"></i></div>
+        <p class="sub" id="rtProg">0 of 7 done</p>
+        <div class="chk" id="rtChk"></div>
+      </section>
+      <section class="card">
+        <h2>Learn more</h2>
+        <p class="sub">Free official guides for the tools above.</p>
+        <div class="links">
+          <a href="https://adoption.microsoft.com/copilot/" target="_blank" rel="noopener">Microsoft 365 Copilot: adoption and how-to</a>
+          <a href="https://learn.microsoft.com/power-automate/" target="_blank" rel="noopener">Power Automate documentation and tutorials</a>
+          <a href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini in Google Workspace</a>
+          <a href="https://support.google.com/appsheet" target="_blank" rel="noopener">AppSheet help: build apps from Google Sheets</a>
+          <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio: vibe-code a small tool</a>
+          <a href="#muse">Muse skills tab: scheduled tasks and email drafts</a>
+        </div>
+        <p class="sub" style="margin-top:10px"><b>Safe use:</b> dummy data until it works; no tenant personal data in personal accounts; a person approves anything that leaves the building.</p>
+      </section>
+    </div>
   </div>
 
   <div class="tab" id="tab-coding" role="tabpanel" hidden>
@@ -398,6 +471,41 @@ const MUSE = [
  ["6. Set a goal","Maintenance & asset reliability","Break a bigger goal into steps with reminders and progress tracking.","My goal is to cut repeat breakdowns of our water pumps over the next 3 months. Break it into weekly steps, remind me each Friday, and keep a progress tracker."]
 ];
 document.getElementById("museSkills").innerHTML = MUSE.map(([t, need, what, p], i) => { store["m"+i] = p; return `<div class="use"><span class="tag">${esc(need)}</span><b>${esc(t)}</b><p>${esc(what)}</p><p class="muted" style="font-size:.85rem">“${esc(p)}”</p><button class="mini" data-copy="m${i}">Copy prompt</button></div>`; }).join("");
+const RT_TOOLS = [
+ ["Draft email replies and tenant notices","Copilot in Outlook, or Gemini in Gmail","Open the email, choose Draft with Copilot / Help me write, paste your template"],
+ ["Turn a repeated job into a reusable prompt","ChatGPT, Claude, Copilot or Gemini","Paste 3 past examples and ask for one template with blanks"],
+ ["Move data between email, forms and lists automatically","Power Automate (Microsoft) or Apps Script (Google)","Start from a template flow, e.g. 'save email attachments to SharePoint'"],
+ ["Give the team one place to log defects or feedback","Microsoft Forms + Lists, or Google Forms + Sheets / AppSheet","Make the form first, then a simple status view"],
+ ["Build a small custom tool (notice generator, PM planner)","Google AI Studio, Claude or Gemini Canvas","Describe the tool in plain words; test with dummy data"],
+ ["Run a task on a schedule (weekly briefing, reminders)","Muse, Copilot scheduled prompts, or Power Automate","Write the task once, set the day and time, check the first 2 runs"],
+ ["Answer questions from SOPs and manuals","NotebookLM or a Copilot agent","Upload the SOP, ask questions, check the cited source"]
+];
+const RT_RECIPES = [
+ ["Tenant notice generator","Copilot / Gemini / AI Studio",["List the notice types you send (water cut, lift maintenance, fire drill)","Paste 2 old notices as examples","Fill the blanks each time; a person checks before sending"],"You are a building management officer. Write a tenant notice for [notice type] on [date], [time window], affecting [block and levels]. Include what tenants must do, who to contact, and an apology for inconvenience. Polite, under 120 words. Also give a Simplified Chinese version."],
+ ["Email reply drafts","Copilot in Outlook / Gemini in Gmail",["Collect 5 common tenant email types","Write one model reply per type","Ask AI to draft from the model; you edit and send"],"Draft a reply to this tenant email. Acknowledge the issue, give the next step and a target date of [date], and the contact [name / hotline]. Professional and friendly, under 100 words. Email: [paste email]"],
+ ["PM schedule from an asset list","Excel Copilot / ChatGPT / Claude",["Export your asset list (asset, system, last service date)","Add the service frequency for each system","Ask AI for a 12-month calendar and check it against contracts"],"Here is my asset list with columns asset, system, last_service_date, frequency_months. Create a 12-month preventive maintenance schedule as a table by month, flag anything overdue, and spread work so no week has more than [5] jobs. Data: [paste]"],
+ ["Shared defect and feedback log","Forms + Lists / Google Forms + AppSheet",["Decide 6 fields: location, issue, photo, reported by, priority, status","Build the form; link it to a sheet or list","Add a view of open items older than 14 days"],"Design a simple defect log for a facilities team. Give me the form fields, dropdown options, a status workflow (new, assigned, in progress, closed), and a weekly summary formula that counts open items by priority and age."],
+ ["Meeting notes to action list","Copilot in Teams / Gemini in Meet / any chat AI",["Record or paste the meeting notes","Ask for actions with owner and due date","Send the list after a quick check"],"From these meeting notes, list every action as a table: action, owner, due date, status. Then write a 5-line summary for people who missed the meeting. Notes: [paste]"],
+ ["Weekly contractor follow-up","Muse / Power Automate / Copilot",["Keep open work orders in one sheet","Each Friday, ask AI to list overdue items per contractor","Review and send the follow-up emails yourself"],"Here are open work orders with columns contractor, location, issue, date_raised, target_date. List overdue items grouped by contractor, then draft one short, firm follow-up email per contractor asking for a completion date. Data: [paste]"]
+];
+const RT_STEPS = ["Pick one routine task I do every week","Write its steps, inputs and output on one page","Time it once, before any AI","Make a reusable prompt from 3 past examples","Try a recipe or tool from this tab with dummy data","Use it for real for one week, a person approving each output","Time it again and share the result with the class"];
+(() => {
+  const rows = (window.PARTICIPANTS || []).filter((r) => /Routine/.test(r.themes));
+  document.getElementById("rt-n").textContent = rows.length;
+  document.getElementById("rtNeeds").innerHTML = rows.map((r) => {
+    const c = r.challenge && r.challenge !== "Not stated" ? r.challenge : r.bring_back;
+    return `<div class="need"><small>${esc(r.id)} · ${esc(r.function_group)}</small>${esc(c)}</div>`;
+  }).join("");
+  document.getElementById("rtTools").innerHTML = RT_TOOLS.map(([a, b, c]) => `<tr><td>${esc(a)}</td><td><b>${esc(b)}</b></td><td>${esc(c)}</td></tr>`).join("");
+  document.getElementById("rtRecipes").innerHTML = RT_RECIPES.map(([t, tool, steps, p], i) => { store["r"+i] = p; return `<div class="card mcard"><span class="tag">${esc(tool)}</span><h3>${esc(t)}</h3><ol style="margin:4px 0 0;padding-left:1.2em;font-size:.88rem">${steps.map((x) => `<li>${esc(x)}</li>`).join("")}</ol><pre>${esc(p)}</pre><button class="mini" data-copy="r${i}">Copy prompt</button></div>`; }).join("");
+  const KEY = "b7-routine-checklist";
+  let done = []; try { done = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) {}
+  const box = document.getElementById("rtChk");
+  box.innerHTML = RT_STEPS.map((t, i) => `<label><input type="checkbox" data-i="${i}" ${done.includes(i) ? "checked" : ""}><span>${esc(t)}</span></label>`).join("");
+  const upd = () => { const n = box.querySelectorAll("input:checked").length; document.getElementById("rtProg").textContent = `${n} of ${RT_STEPS.length} done`; document.getElementById("rtBar").style.width = (100 * n / RT_STEPS.length) + "%"; };
+  box.addEventListener("change", () => { const d = [...box.querySelectorAll("input:checked")].map((x) => +x.dataset.i); try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} upd(); });
+  upd();
+})();
 document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-copy]"); if (!b) return;
   const txt = store[b.dataset.copy], old = b.textContent;
@@ -406,7 +514,7 @@ document.addEventListener("click", async (e) => {
   setTimeout(() => { b.textContent = old; }, 1400);
 });
 
-const TABS = ["needs", "coding", "muse", "materials", "photos"];
+const TABS = ["needs", "routine", "coding", "muse", "materials", "photos"];
 function show() {
   const id = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "needs";
   TABS.forEach((t) => {
